@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Warga
+from .models import Warga, Pengaduan
 # Create your views here.
 
 class WargalistView(ListView):
@@ -8,3 +8,9 @@ class WargalistView(ListView):
 
 class WargaDetailView(DetailView):
     model = Warga
+
+class PengaduanListView(ListView):
+    model = Pengaduan
+    template_name = 'warga/pengaduan_list.html'
+    context_object_name = 'daftar_pengaduan'
+    ordering = ['-tanggal_pengaduan']
