@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'warga/base.html' %}
+{% block content %}
         <p>Nomor Induk Kependudukan : {{object.nik}}</p>
         <p>Nama Lengkap : {{object.nama_lengkap}}</p>
         <p>Alamat Tinggal: {{object.alamat}}</p> 
         <p>Nomor Telepon: {{object.no_telp}}</p> 
         <p>tanggal_registrasi: {{object.tanggal_registrasi}}</p> 
-</body>
-</html>
+{% endblock %}

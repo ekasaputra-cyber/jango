@@ -7,6 +7,8 @@
 </head>
 <body>
     <h1>Daftar Warga</h1>
+    <a href="{% url 'warga-tambah' %}">Tambah Warga Baru</a>
+    <hr>
     <u1>
         {% for warga in object_list %}
             <li>{{ warga.nama_lengkap }} - NIK:  <a href="{% url 'wargadetail-list' warga.pk %}">{{ warga.nik }}</a></li>

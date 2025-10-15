@@ -1,0 +1,16 @@
+{% extends 'warga/base.html' %}
+{% block content %}
+    <div class="main-container">
+        <div class="header-box">
+            <h1>Form Pengaduan Baru</h1>
+            <p>Silakan isi data pengaduan dengan benar pada form di bawah ini.</p>
+        </div>
+        <div class="form-card">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Kirim Pengaduan</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
