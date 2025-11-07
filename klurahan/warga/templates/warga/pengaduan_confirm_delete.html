@@ -1,0 +1,67 @@
+{% extends 'warga/base.html' %}
+{% block content %}
+    <style>
+        body {
+            background: linear-gradient(135deg, #7fff9d 0%, #b7ffe7 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        .delete-container {
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 32px;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .delete-container h2 {
+            color: #d9534f;
+            margin-bottom: 18px;
+        }
+        .delete-container p {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+        .delete-btn {
+            background: #d9534f;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-right: 12px;
+            transition: background 0.2s;
+        }
+        .delete-btn:hover {
+            background: #b52a1a;
+        }
+        .cancel-btn {
+            background: #218c5a;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 0;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+        .cancel-btn:hover {
+            background: #34c77b;
+        }
+    </style>
+    <div class="delete-container">
+        <h2>Konfirmasi Hapus Pengaduan</h2>
+        <p>Apakah Anda yakin ingin menghapus pengaduan <strong>{{ object.judul }}</strong>?</p>
+        <form method="post" style="margin-bottom:0;">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Ya, Hapus</button>
+            <a href="{% url 'pengaduan-list' %}" class="cancel-btn">Batal</a>
+        </form>
+    </div>
+{% endblock %}

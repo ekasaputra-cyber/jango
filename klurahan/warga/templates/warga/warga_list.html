@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Daftar Warga</h1>
-    <a href="{% url 'warga-tambah' %}">Tambah Warga Baru</a>
-    <hr>
-    <u1>
-        {% for warga in object_list %}
-            <li>{{ warga.nama_lengkap }} - NIK:  <a href="{% url 'wargadetail-list' warga.pk %}">{{ warga.nik }}</a></li>
-        {% empty %}
-            <li>Belum ada data warga yang terdaftar</li>
-        {% endfor %}
-    </u1>
+{% extends 'warga/base.html' %}
+{% block content %}
+<body style="background: linear-gradient(135deg, #7fff9d 0%, #b7ffe7 100%); font-family: 'Poppins', Arial, sans-serif; min-height: 100vh; margin:0;">
+    <div style="max-width:800px;margin:40px auto;padding:32px;background:#fff;border-radius:18px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+            <h1 style="color:#218c5a;margin:0;">Daftar Warga</h1>
+            <a href="{% url 'warga-tambah' %}" style="background:#218c5a;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:500;">Tambah Warga Baru</a>
+        </div>
+        <div>
+            {% for warga in object_list %}
+                <div style="background:#e6fff2;border-radius:12px;padding:18px 24px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:space-between;">
+                    <div>
+                        <span style="font-size:1.1rem;font-weight:600;color:#218c5a;">{{ warga.nama_lengkap }}</span><br>
+                        <span style="color:#555;">NIK: <a href="{% url 'warga-detail' warga.pk %}" style="color:#218c5a;text-decoration:underline;">{{ warga.nik }}</a></span>
+                    </div>
+                    <div>
+                        <a href="{% url 'warga-edit' warga.pk %}" style="color:#34c77b;font-weight:500;margin-right:16px;">Edit</a>
+                        <a href="{% url 'warga-hapus' warga.pk %}" style="color:#d9534f;font-weight:500;">Hapus</a>
+                    </div>
+                </div>
+            {% empty %}
+                <div style="text-align:center;color:#888;padding:32px;">Belum ada data warga yang terdaftar</div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
-</html>
+{% endblock %}

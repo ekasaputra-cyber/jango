@@ -1,8 +1,22 @@
 {% extends 'warga/base.html' %}
 {% block content %}
-        <p>Nomor Induk Kependudukan : {{object.nik}}</p>
-        <p>Nama Lengkap : {{object.nama_lengkap}}</p>
-        <p>Alamat Tinggal: {{object.alamat}}</p> 
-        <p>Nomor Telepon: {{object.no_telp}}</p> 
-        <p>tanggal_registrasi: {{object.tanggal_registrasi}}</p> 
+<body style="background: linear-gradient(135deg, #7fff9d 0%, #b7ffe7 100%); font-family: 'Poppins', Arial, sans-serif; min-height: 100vh; margin:0;">
+        <div style="max-width:600px;margin:40px auto;padding:32px;background:#fff;border-radius:18px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+                        <h1 style="color:#218c5a;margin:0;">Detail Warga</h1>
+                        <div>
+                                <a href="{% url 'warga-edit' object.pk %}" style="background:#34c77b;color:#fff;padding:8px 18px;border-radius:8px;text-decoration:none;font-weight:500;margin-right:8px;">Edit</a>
+                                <a href="{% url 'warga-hapus' object.pk %}" style="background:#d9534f;color:#fff;padding:8px 18px;border-radius:8px;text-decoration:none;font-weight:500;">Hapus</a>
+                        </div>
+                </div>
+                <hr style="margin-bottom:24px;">
+                <div style="font-size:1.1rem;line-height:2;color:#333;">
+                        <div><strong>Nomor Induk Kependudukan:</strong> {{ object.nik }}</div>
+                        <div><strong>Nama Lengkap:</strong> {{ object.nama_lengkap }}</div>
+                        <div><strong>Alamat Tinggal:</strong> {{ object.alamat }}</div>
+                        <div><strong>Nomor Telepon:</strong> {{ object.no_telepon }}</div>
+                        <div><strong>Tanggal Registrasi:</strong> {{ object.tanggal_registrasi }}</div>
+                </div>
+        </div>
+</body>
 {% endblock %}
