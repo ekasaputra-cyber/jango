@@ -12,6 +12,7 @@ from .forms import WargaForm, PengaduanForm
 from rest_framework import viewsets
 # from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .serializers import WargaSerializer, PengaduanSerializer
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly, IsAdminUser
 
 # =====================================================
 # Regular Django Views (for web templates)
@@ -107,6 +108,7 @@ class WargaViewSet(viewsets.ModelViewSet):
     """API endpoint for listing all Warga"""
     queryset = Warga.objects.all().order_by('-tanggal_registrasi')
     serializer_class = WargaSerializer
+    permissions_classes=[IsAuthenticatedOrReadOnly]
 
 class PengaduanViewSet(viewsets.ModelViewSet):
     """API endpoint for listing all Pengaduan"""
