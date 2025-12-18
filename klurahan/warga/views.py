@@ -12,7 +12,7 @@ from .forms import WargaForm, PengaduanForm
 from rest_framework import viewsets
 # from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .serializers import WargaSerializer, PengaduanSerializer
-from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.filters import SearchFilter, OrderingFilter 
 
 # =====================================================
@@ -109,7 +109,7 @@ class WargaViewSet(viewsets.ModelViewSet):
     """API endpoint for listing all Warga"""
     queryset = Warga.objects.all().order_by('-tanggal_registrasi')
     serializer_class = WargaSerializer
-    permissions_classes=[IsAuthenticatedOrReadOnly]
+    permission_classes= [IsAuthenticated] #[AllowAny] #[IsAuthenticatedOrReadOnly]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['nama_lengkap', 'nik', 'alamat']
     ordering_fields = ['nama_lengkap', 'tanggal_registrasi']
